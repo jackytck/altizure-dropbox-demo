@@ -262,13 +262,15 @@ function gql(_ref2) {
 }
 
 function renderUpload(divId, token) {
+  var u = new URL(window.location.href);
+  var pid = u.searchParams.get('pid');
   var query = "\n  {\n    my {\n      self {\n        name\n      }\n    }\n  }\n  ";
   gql({
     query: query,
     token: token
   }).then(function (res) {
     var user = res.data.my.self.name;
-    var html = "\n            <h3>Welcome ".concat(user, "!</h3>\n            <p>1. Press Choose from Dropbox</p>\n            <p>2. Enter pid</p>\n            <p>3. Press Upload</p>\n            <input type=\"text\" id=\"pid\" name=\"pid\" placeholder=\"pid\" />\n            <button onclick=\"onUpload()\">Upload</button>\n            <div><div id=\"file-list\" /></div>\n            <div><div id=\"image-list\" /></div>\n            <br/>\n            <br/>\n            <button onclick=\"onLogout()\">Logout</button>\n          ");
+    var html = "\n            <h3>Welcome ".concat(user, "!</h3>\n            <p>1. Press Choose from Dropbox</p>\n            <p>2. Enter pid</p>\n            <p>3. Press Upload</p>\n            <input type=\"text\" id=\"pid\" name=\"pid\" placeholder=\"pid\" value=\"").concat(pid, "\" />\n            <button onclick=\"onUpload()\">Upload</button>\n            <div><div id=\"file-list\" /></div>\n            <div><div id=\"image-list\" /></div>\n            <br/>\n            <br/>\n            <button onclick=\"onLogout()\">Logout</button>\n          ");
     document.getElementById(divId).innerHTML = html;
   });
 }
@@ -401,7 +403,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61880" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52188" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
