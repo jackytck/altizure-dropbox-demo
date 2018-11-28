@@ -72,6 +72,8 @@ function gql ({ query, token }) {
 }
 
 function renderUpload (divId, token) {
+  const u = new URL(window.location.href)
+  const pid = u.searchParams.get('pid')
   const query = `
   {
     my {
@@ -88,7 +90,7 @@ function renderUpload (divId, token) {
             <p>1. Press Choose from Dropbox</p>
             <p>2. Enter pid</p>
             <p>3. Press Upload</p>
-            <input type="text" id="pid" name="pid" placeholder="pid" />
+            <input type="text" id="pid" name="pid" placeholder="pid" value="${pid}" />
             <button onclick="onUpload()">Upload</button>
             <div><div id="file-list" /></div>
             <div><div id="image-list" /></div>
