@@ -263,7 +263,7 @@ function gql(_ref2) {
 
 function renderUpload(divId, token) {
   var u = new URL(window.location.href);
-  var pid = u.searchParams.get('pid');
+  var pid = u.searchParams.get('pid') || '';
   var query = "\n  {\n    my {\n      self {\n        name\n      }\n    }\n  }\n  ";
   gql({
     query: query,
@@ -403,7 +403,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52188" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50069" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
