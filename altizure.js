@@ -73,7 +73,7 @@ function gql ({ query, token }) {
 
 function renderUpload (divId, token) {
   const u = new URL(window.location.href)
-  const pid = u.searchParams.get('pid')
+  const pid = u.searchParams.get('pid') || ''
   const query = `
   {
     my {
